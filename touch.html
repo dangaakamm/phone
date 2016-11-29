@@ -22,12 +22,18 @@ img{
 	</style>
 	<script>
 	window.onload=function(){
+		document.onmousedown=function (e) {
+			e.preventDefault();
+		}
+		document.onmousemove=function (e) {
+			e.preventDefault();
+		}
 		var widths=document.documentElement.clientWidth;
 		var heights=document.documentElement.clientHeight;
 		var marginL=0;
 		var num=0;
 
-		$(".box").css({"width":5*widths+"px","height":heights+"px"})
+		$(".box").css({"width":5*widths+"px","height":heights+"px"});
 		$("img").css({"width":widths+"px"});
 		touch.on("body","dragstart",".box",function(e){
 			$(".box").css({
@@ -59,8 +65,8 @@ img{
 				})
 			}else{
 				$(".box").css({
-					marginLeft:num*widths,
-					transition:"margin-left 1s ease"
+					marginLeft:-num*widths,
+					transition:"margin 1s ease"
 				})
 			}
 		})
